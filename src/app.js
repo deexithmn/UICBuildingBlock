@@ -3,6 +3,7 @@ var content = $("#content");
 var home = $("#home");
 var admin = $("#admin");
 var user = $("#user");
+var adminCheck = null;
 var uicInstance;
 
 App = {
@@ -51,6 +52,12 @@ App = {
     return App.getResults()
   },
 
+  home: function(){
+    home.show();
+    user.hide();
+    admin.hide();
+  },
+
 
 
   user: function(){
@@ -84,16 +91,18 @@ App = {
   checkIsAdmin: function(){
     var adminButton = $('#adminButton');
     adminButton.attr('disabled','disabled');
-    App.contracts.UICBuilding.deployed().then(function(instance) {
-        uicInstance = instance;
-        uicInstance.checkIsAdmin().then(function (status){
-          // console.log("Status --- ");
-          // console.log(status);
-          if(status['receipt']['status']){
-            adminButton.removeAttr('disabled');
-          }
-      })
-  });
+    console.log(adminButton)
+    if(adminCheck == null){
+           App.contracts.UICBuilding.deployed().then(function(instance) {
+            uicInstance = instance;
+            uicInstance.checkIsAdmin().then(function (status){
+              if(status['receipt']['status']){
+                adminButton.removeAttr('disabled');
+              }
+            })
+          });
+    }
+   
 },
 
 
