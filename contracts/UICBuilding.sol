@@ -11,6 +11,7 @@ contract UICBuilding {
         _;
     }
     
+
     struct Building{
         string buildingIndex;
         string buildingId;
@@ -28,6 +29,8 @@ contract UICBuilding {
     constructor ()  public {
         owner = msg.sender;
     }
+
+
     function addBuilding(string memory _buildingIndex, 
                          string memory _buildingId, 
                          string memory _buildingName, 
@@ -44,5 +47,15 @@ contract UICBuilding {
     }
     function getBuilindingAddress(uint index) view public returns (Building memory){
         return building[index];
+    }
+
+    function checkIsAdmin() public returns (bool){
+    	if(msg.sender == owner ){
+    		return true;
+    	}
+    	return false;
+    }
+    function removeBuiding(uint _buildingIndex) public onlyOwner{
+    	delete building[_buildingIndex];
     }
 }

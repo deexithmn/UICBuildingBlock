@@ -38,6 +38,7 @@ App = {
     });
   },
 
+
   render: function() {
     loader.show();
     content.hide();
@@ -49,6 +50,8 @@ App = {
     });
     return App.getResults()
   },
+
+
 
   user: function(){
     home.hide();
@@ -75,8 +78,24 @@ App = {
         }
         })
       })
-
+    return App.checkIsAdmin();
   },
+
+  checkIsAdmin: function(){
+    var adminButton = $('#adminButton');
+    adminButton.attr('disabled','disabled');
+    App.contracts.UICBuilding.deployed().then(function(instance) {
+        uicInstance = instance;
+        uicInstance.checkIsAdmin().then(function (status){
+          // console.log("Status --- ");
+          // console.log(status);
+          if(status['receipt']['status']){
+            adminButton.removeAttr('disabled');
+          }
+      })
+  });
+},
+
 
   admin: function(){
     home.hide();

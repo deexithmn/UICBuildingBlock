@@ -22,9 +22,9 @@ module.exports = {
           `https://kovan.infura.io/v3/${process.env.INFURA_API_KEY}`
         )
       },
-      network_id: 42,
-      gas: 3000000,
-      gasPrice: 10000000000
+      gas: 5000000,
+      gasPrice: 25000000000,
+      network_id: 42
     },
     rinkeby: {
       provider: function() {
