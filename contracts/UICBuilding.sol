@@ -45,6 +45,7 @@ contract UICBuilding {
         totalBuildings++;
         building[totalBuildings] = Building(_buildingIndex, _buildingId, _buildingName, _buildingCode, _buildingAddress, _buildingBuiltDate, _buildingNASF, _buildingNUSF, _buldingGSF, _buildingCategory, _BuildingRegion);
     }
+
     function getBuilindingAddress(uint index) view public returns (Building memory){
         return building[index];
     }
@@ -55,7 +56,9 @@ contract UICBuilding {
     	}
     	return false;
     }
+    
     function removeBuiding(uint _buildingIndex) public onlyOwner{
     	delete building[_buildingIndex];
+        totalBuildings--;
     }
 }

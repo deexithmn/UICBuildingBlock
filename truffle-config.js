@@ -1,9 +1,16 @@
 const HDWalletProvider = require("truffle-hdwallet-provider");
 
-require('dotenv').config()  // Store environment-specific variable from '.env' to process.env
+require('dotenv').config() 
 
 module.exports = {
   networks: {
+    // setting for local network
+    development: {
+      host: "127.0.0.1",
+      port: 7545,
+      network_id: "*" 
+    },
+    // Settings for Ropsten
     ropsten: {
       provider: function() {
         return new HDWalletProvider(
@@ -15,6 +22,7 @@ module.exports = {
       gas: 4600000,
       gasPrice: 20000000000
     },
+    // Setting for Kovan
     kovan: {
      provider: function() {
         return new HDWalletProvider(
@@ -25,17 +33,6 @@ module.exports = {
       gas: 5000000,
       gasPrice: 25000000000,
       network_id: 42
-    },
-    rinkeby: {
-      provider: function() {
-        return new HDWalletProvider(
-          process.env.MNEMONIC,
-          `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`
-        )
-      },
-      network_id: 4,
-      gas: 3000000,
-      gasPrice: 10000000000
     },
     // main ethereum network(mainnet)
     main: {

@@ -5,30 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>UIC Buildings</title>
-
     <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
     <div class="container" style="width: auto; margin-top: 10%">
       <div id="home" class="row">
-        <div class="col-lg-12">
-          <div class="jumbotron"> 
-           <h1  class="text-center">What are you?</h1>
-              <br>
-              <hr>
-              <br>
-              <button id='adminButton' class="btn btn-danger" style='width:150px' onclick="App.admin()"> Admin </button>
-              <button class="btn btn-primary float-right" style='width:150px' onclick="App.user()" > User</button>
-          </div>      
-      </div>
-      <footer class="container">
-        <div class="text-center">
-          <h4>CS-540 Final Project</h4>
-          <h4>Group - 3 </h4>
-          <h4>Amogh  - Deexith - Lincy - Pooja - Phil - Rachita </h4>  
+          <div class="col-lg-12">
+            <div class="jumbotron"> 
+             <h1  class="text-center">What are you?</h1>
+                <br>
+                <hr>
+                <br>
+                <button id='adminButton' class="btn btn-danger" style='width:250px' onclick="App.admin()"> Admin </button>
+                <button class="btn btn-primary float-right" style='width:250px' onclick="App.user()" > User</button>
+            </div>      
         </div>
-        
-      </footer>
+        <footer class="container">
+          <div class="text-center">
+            <h4>CS-540 Final Project</h4>
+            <h4>Group - 3 </h4>
+            <h4>Amogh  - Deexith - Lincy - Pooja - Phil - Rachita </h4>  
+          </div>
+        </footer>
       </div>
 
 
@@ -41,10 +39,10 @@
         </div>
       
         
-            <div id="loader">
-            <p class="text-center">Loading...</p>
+        <div id="loader">
+        <p class="text-center">Loading...</p>
         </div>
-          <div id="content" >
+          <div id="userContent" >
             <table class="table">
               <thead>
                 <tr>
@@ -57,13 +55,29 @@
             <hr/>
             <button class="btn btn-black btn-block" onclick="App.home()"> Back </button>
             <p id="accountAddress" class="text-center"></p>
-        </div>
-      </div>
+          </div>
+         </div> 
+
 
       <div id='admin' style="display: none;">
         <div class="jumbotron"> 
           <h1> Hello Admin!</h1>
-          <P> Add the below details </P>
+          <P> Welcome back! </P>
+        </div>
+
+        <div id="adminContent" >
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="text-center">Click On the Building Name to Delete it!</th>
+                </tr>
+              </thead>
+              <tbody id="buildingDetailsAdmin">
+              </tbody>
+            </table>
+            <hr/>
+            <button class="btn btn-black btn-block" onclick="App.home()"> Back </button>
+            <p id="accountAddress" class="text-center"></p>
         </div>
 
         <form>
@@ -120,9 +134,6 @@
      <br>
 
 
-
-
-  <!-- Modal -->
  <div class="modal"  id='myModal' tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -186,9 +197,7 @@
       
     </div>
     
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://etherscan.io/jss/web3.min.js"></script>
     <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
